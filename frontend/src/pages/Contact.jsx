@@ -1,0 +1,49 @@
+import { useEffect } from "react";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
+import PageBanner from "@/components/public/PageBanner";
+import LeadForm from "@/components/public/LeadForm";
+import { useSettings } from "@/context/SettingsContext";
+import { waLink, telLink } from "@/lib/constants";
+
+export default function Contact() {
+  const { settings } = useSettings();
+  useEffect(() => { document.title = "Contact | SUN SWITCH"; }, []);
+
+  return (
+    <div>
+      <PageBanner breadcrumb="Get In Touch" title="Contact SUN SWITCH" subtitle="We're here to help you switch to solar. Reach out any time." />
+      <section className="py-20 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl grid lg:grid-cols-3 gap-10">
+          <div className="space-y-4">
+            <div className="bg-navy rounded-2xl p-7 text-white">
+              <h3 className="font-heading font-extrabold text-xl">SUN SWITCH</h3>
+              <p className="text-slate-300 text-sm mt-1">{settings.tagline}</p>
+              <ul className="mt-5 space-y-4 text-sm">
+                <li className="flex items-start gap-3"><MapPin className="w-5 h-5 text-solar shrink-0" /><span>{settings.address}</span></li>
+                <li className="flex items-center gap-3"><Phone className="w-5 h-5 text-solar" /><a href={telLink(settings.phone)} className="hover:text-solar">{settings.phone}</a></li>
+                <li className="flex items-center gap-3"><MessageCircle className="w-5 h-5 text-solar" /><a href={waLink(settings.whatsapp)} target="_blank" rel="noreferrer" className="hover:text-solar">{settings.whatsapp}</a></li>
+                <li className="flex items-center gap-3"><Mail className="w-5 h-5 text-solar" /><a href={`mailto:${settings.email}`} className="hover:text-solar break-all">{settings.email}</a></li>
+              </ul>
+              <div className="mt-6 flex gap-3">
+                <a href={telLink(settings.phone)} className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-white text-navy font-semibold py-2.5 hover:bg-slate-100 transition-colors" data-testid="contact-call-btn"><Phone className="w-4 h-4" /> Call</a>
+                <a href={waLink(settings.whatsapp)} target="_blank" rel="noreferrer" className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1da851] text-white font-semibold py-2.5 transition-colors" data-testid="contact-whatsapp-btn"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 h-64">
+              <iframe
+                title="SUN SWITCH location"
+                src="https://www.google.com/maps?q=North+24+Parganas,+West+Bengal&output=embed"
+                width="100%" height="100%" style={{ border: 0 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                data-testid="contact-map"
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+            <h2 className="font-heading text-2xl font-bold text-navy-dark mb-6">Send Us a Message</h2>
+            <LeadForm source="contact" />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 222 60% 33%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 24 95% 53%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 222 60% 33%;
+        --chart-1: 222 60% 33%;
+        --chart-2: 24 95% 53%;
+        --chart-3: 160 84% 39%;
+        --chart-4: 217 91% 60%;
+        --chart-5: 43 96% 56%;
+        --radius: 0.75rem;
+    }
+    .dark {
+        --background: 222 47% 11%;
+        --foreground: 210 40% 98%;
+        --card: 222 44% 15%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 44% 15%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 217 91% 60%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 217 33% 20%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 20%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 24 95% 53%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 62% 40%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 217 33% 24%;
+        --input: 217 33% 24%;
+        --ring: 217 91% 60%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    }
+}
+
+.heading-font { font-family: 'Outfit', sans-serif; }
+
+/* ---- Splash intro animation (CSS-driven, self-dismissing) ---- */
+.ss-splash {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #ffffff;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    animation: ssSplashOut 0.8s ease 2.4s forwards;
+}
+@keyframes ssSplashOut {
+    to { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-24px); }
+}
+.ss-ring {
+    stroke-dasharray: 642; stroke-dashoffset: 642;
+    transform: rotate(-90deg); transform-origin: center;
+    animation: ssDraw 1.5s ease-in-out forwards;
+}
+@keyframes ssDraw { to { stroke-dashoffset: 0; } }
+.ss-logo { animation: ssPop 0.8s ease 0.45s both; }
+@keyframes ssPop { from { opacity: 0; transform: scale(0.55); } to { opacity: 1; transform: scale(1); } }
+.ss-tag { animation: ssFade 0.6s ease 1.4s both; }
+@keyframes ssFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* custom selection */
+::selection { background: #F97316; color: #fff; }
+
+/* thin scrollbar for admin tables */
+.scroll-thin::-webkit-scrollbar { height: 8px; width: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+        column-gap: inherit; row-gap: inherit; gap: inherit;
+        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+    }
+}

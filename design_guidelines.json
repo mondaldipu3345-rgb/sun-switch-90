@@ -1,0 +1,189 @@
+{
+  "theme": "hybrid (marketing light theme, admin support dark/light)",
+  "typography": {
+    "fonts": {
+      "headings": "'Outfit', sans-serif",
+      "body": "'Manrope', sans-serif"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-bold",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed text-slate-600 dark:text-slate-300",
+      "small": "text-sm text-slate-500",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-orange-500"
+    },
+    "rules": [
+      "Never use Inter for headings.",
+      "Headings > 32px must use tracking-tight.",
+      "Always use explicit line-height: leading-none for headings, leading-relaxed for body."
+    ]
+  },
+  "colors": {
+    "brand": {
+      "primary": "#1E3A8A",
+      "primary_light": "#3B82F6",
+      "primary_dark": "#1E40AF",
+      "accent_orange": "#F97316",
+      "accent_green": "#10B981"
+    },
+    "background": {
+      "default": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "dark_default": "#0F172A",
+      "dark_surface": "#1E293B"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#475569",
+      "inverse": "#FFFFFF"
+    },
+    "borders": {
+      "light": "#E2E8F0",
+      "dark": "#334155"
+    },
+    "rules": [
+      "Use #1E3A8A as the primary anchor for trust.",
+      "Use #F97316 for high-intent CTAs (Get Quote, Book Survey) to draw attention.",
+      "Use #10B981 for savings, ROI, and eco-friendly indicators.",
+      "Never use pure black or grey. Use Slate scale (slate-900, slate-50) for tinted neutrals."
+    ]
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "card": "shadow-sm hover:shadow-md transition-shadow duration-300",
+      "dropdown": "shadow-lg border border-slate-200",
+      "glow": "drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]"
+    },
+    "radii": {
+      "button": "rounded-full",
+      "card": "rounded-2xl",
+      "input": "rounded-lg"
+    },
+    "surfaces": {
+      "glass": "backdrop-blur-xl bg-white/80 border border-slate-200/50 shadow-sm",
+      "dark_glass": "backdrop-blur-xl bg-slate-900/80 border border-slate-700/50 shadow-sm"
+    },
+    "rules": [
+      "CRITICAL: Do not use complete transparent background in header or dropdowns.",
+      "Apply glassmorphism to sticky header and floating action buttons.",
+      "Cards should have a 1px subtle border."
+    ]
+  },
+  "component_styles": {
+    "buttons": {
+      "primary": "bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-6 py-3 transition-colors",
+      "secondary": "bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-full px-6 py-3 transition-colors",
+      "outline": "border-2 border-blue-900 text-blue-900 hover:bg-blue-50 rounded-full px-6 py-3 transition-colors",
+      "whatsapp": "bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg"
+    },
+    "cards": {
+      "bento_item": "bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col h-full hover:-translate-y-1 transition-transform duration-300",
+      "stat_card": "bg-white border border-slate-200 rounded-xl p-5 flex items-center justify-between"
+    },
+    "inputs": {
+      "default": "w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+    },
+    "hero": {
+      "overlay": "bg-slate-900/50",
+      "text_alignment": "text-center md:text-left"
+    }
+  },
+  "grids_and_layouts": {
+    "spacing": {
+      "section_padding": "py-20 sm:py-24 lg:py-32",
+      "container": "container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl",
+      "gap": "gap-6 sm:gap-8 lg:gap-12"
+    },
+    "bento_grid": {
+      "marketing": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6",
+      "dashboard": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    }
+  },
+  "motion_and_animations": {
+    "logo_splash": {
+      "duration": "2.5s",
+      "sequence": [
+        "1. Full screen overlay (bg-blue-900)",
+        "2. SVG Circle path drawn (framer-motion length animation, 1s)",
+        "3. Sun and 'SUN SWITCH' text fade and scale in inside the circle (0.5s)",
+        "4. Entire splash screen fades out or slides up, revealing the homepage (1s)"
+      ],
+      "note": "Only play on first load (use sessionStorage)."
+    },
+    "interactions": {
+      "hover": "Scale up icons slightly, shift cards up by 4px, brighten button colors.",
+      "scroll": "Use framer-motion for staggered fade-up of bento cards and section titles on scroll."
+    }
+  },
+  "media_and_images": {
+    "image_urls": {
+      "hero_residential": {
+        "url": "https://images.unsplash.com/photo-1583345237708-add35a664d77?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxNzV8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBob3VzZSUyMHNvbGFyJTIwcm9vZnxlbnwwfHx8fDE3OTA4ODQxOTZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Hero Section",
+        "description": "Modern concrete house with solar vibe. Use for residential hero."
+      },
+      "commercial_solar": {
+        "url": "https://images.unsplash.com/photo-1694327671725-e2a81cda3436?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHw0fHxjb21tZXJjaWFsJTIwc29sYXIlMjBpbnN0YWxsYXRpb258ZW58MHx8fHwxNzkwODg0MTg3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "Services / Solutions",
+        "description": "Rows of solar panels for commercial/industrial section."
+      },
+      "solar_battery": {
+        "url": "https://images.unsplash.com/photo-1742899273038-67ff67477663?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGJhdHRlcnklMjBpbnZlcnRlcnxlbnwwfHx8fDE3OTA4ODQxODd8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Products",
+        "description": "Battery units for Hybrid/Off-grid product category."
+      },
+      "solar_panel_close": {
+        "url": "https://images.unsplash.com/photo-1668097613572-40b7c11c8727?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwyfHxjb21tZXJjaWFsJTIwc29sYXIlMjBpbnN0YWxsYXRpb258ZW58MHx8fHwxNzkwODg0MTg3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "Why Choose Us / About",
+        "description": "Worker installing solar panel. Good for trust/services."
+      }
+    },
+    "rules": [
+      "Hero image must have max overlay opacity bg-slate-900/50 to ensure text readability while keeping image visible.",
+      "Images should be responsive and use object-cover."
+    ]
+  },
+  "libraries_and_tools": {
+    "icons": "lucide-react (default for UI), react-icons (if brand logos like WhatsApp are needed)",
+    "motion": "framer-motion",
+    "charts": "recharts (for Admin Dashboard and Solar Calculator graphs)",
+    "ui": "shadcn/ui (Cards, Inputs, Dialogs, Tables, Select, Tabs, Accordion)"
+  },
+  "accessibility": {
+    "contrast": "Ensure all text meets WCAG AA standards (4.5:1 ratio).",
+    "focus": "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none",
+    "testing": "All interactive elements MUST have data-testid attributes (e.g., data-testid='hero-cta-button', data-testid='contact-form-submit')."
+  },
+  "instructions_to_main_agent": {
+    "general": [
+      "Build a Hybrid application: Public Marketing Website and Secure Admin Panel (/admin).",
+      "Ensure all code is written in JavaScript (.js/.jsx) as this project does not use TypeScript (.tsx). Use standard prop validation if necessary.",
+      "Marketing side must feel premium, modern, and trustworthy. Use generous spacing (py-20) and bento grid layouts.",
+      "Admin side must be data-dense, modular, and use a standard sidebar + header layout. Include stat cards, lead management table with pipeline status, and CRUD panels.",
+      "The logo should be represented as a blue circle with a clean white border/ring around it. Apply this styling via CSS to a custom SVG or logo component.",
+      "For the contact bar, make it a narrow sticky top header above the main nav on desktop.",
+      "Implement the Solar Calculator and EMI Calculator with interactive sliders and instant results.",
+      "Do NOT use HTML <input type='date'> or <select>, use shadcn components.",
+      "Use sonner for all toast notifications."
+    ],
+    "admin_panel": [
+      "Layout: Sidebar (collapsible) + Topbar.",
+      "Dashboard: 4-6 Stat cards (Total Enquiries, Site Surveys, etc.), 2 Recharts (Enquiries over time, Lead statuses).",
+      "Lead Management Table: Searchable, filterable by Status (NEW, CONTACTED, SITE SURVEY, QUOTATION, CONFIRMED, INSTALLATION, COMPLETED, CANCELLED). Include a mock CSV export button.",
+      "Use clean, industrial dashboard patterns: white cards, slate borders, compact padding (p-4 or p-6)."
+    ]
+  },
+  "universal_guidelines_for_main_agent": [
+    "Do not converge toward generic 'AI slop' aesthetics. Use layered design elements, z-index hierarchy, and deep contrast.",
+    "Do not use dark colors as gradients.",
+    "Do not center-align the app container (.App { text-align: center; } is banned). Left-align paragraphs and dense content.",
+    "Never use AI assistant emojis (🤖🧠💭) for icons. Use clean Lucide icons.",
+    "Every interaction needs micro-animations (hover states, transitions). Exclude transforms from universal transitions (transition: all is banned).",
+    "Use glassmorphism (backdrop-blur-xl bg-white/80) correctly. Do NOT use completely transparent backgrounds for headers or overlays.",
+    "Prioritize reusing pre-existing shadcn/ui components before building from scratch.",
+    "Never use placeholder URLs (like via.placeholder.com). Use the provided image URLs or styled divs if images are missing.",
+    "All components should be written in JavaScript (.js/.jsx) avoiding any TypeScript specific syntax."
+  ]
+}
