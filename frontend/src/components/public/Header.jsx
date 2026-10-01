@@ -62,16 +62,16 @@ export default function Header() {
             <Logo size={scrolled ? 42 : 48} />
             <div className="leading-tight">
               <div className="font-heading font-extrabold text-navy text-lg lg:text-xl tracking-tight">SUN SWITCH</div>
-              <div className="text-[10px] uppercase tracking-[0.2em] text-solar font-semibold">The energy of future</div>
+              <div className="text-[9px] uppercase tracking-[0.18em] text-solar font-semibold whitespace-nowrap">The energy of future</div>
             </div>
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
             {NAV_LINKS.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                className={`text-sm font-semibold tracking-wide transition-colors hover:text-solar ${location.pathname === l.to ? "text-solar" : "text-slate-700"}`}
+                className={`text-sm font-semibold tracking-wide whitespace-nowrap transition-colors hover:text-solar ${location.pathname === l.to ? "text-solar" : "text-slate-700"}`}
                 data-testid={`nav-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
               >
                 {l.label}
@@ -79,9 +79,9 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Button onClick={() => navigate("/quote")} className="bg-solar hover:bg-solar-dark text-white rounded-full font-semibold" data-testid="header-quote-btn">GET A QUOTE</Button>
-            <Button onClick={() => navigate("/site-survey")} variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white rounded-full font-semibold" data-testid="header-survey-btn">BOOK A SITE SURVEY</Button>
+          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
+            <Button onClick={() => navigate("/quote")} className="btn-solar text-white rounded-full font-semibold border-0 px-5 whitespace-nowrap" data-testid="header-quote-btn">GET A QUOTE</Button>
+            <Button onClick={() => navigate("/site-survey")} variant="outline" className="border-2 border-navy text-navy hover:bg-navy hover:text-white rounded-full font-semibold px-4 whitespace-nowrap" data-testid="header-survey-btn">SITE SURVEY</Button>
           </div>
 
           <button className="xl:hidden p-2 text-navy" onClick={() => setOpen(!open)} aria-label="Toggle menu" data-testid="mobile-menu-toggle">

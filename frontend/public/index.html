@@ -32,31 +32,39 @@
         <title>SUN SWITCH | Solar Energy Solutions in North 24 PGS, West Bengal</title>
         <style>
             #ss-splash {
-                position: fixed; inset: 0; z-index: 99999; background: #ffffff;
+                position: fixed; inset: 0; z-index: 99999;
+                background: radial-gradient(1200px 600px at 50% 38%, #ffffff 0%, #eef4ff 55%, #e3ecff 100%);
                 display: flex; flex-direction: column; align-items: center; justify-content: center;
-                animation: ssSplashOut 0.7s ease 2.2s forwards;
+                animation: ssSplashOut 0.8s cubic-bezier(.4,0,.2,1) 3.3s forwards;
             }
-            @keyframes ssSplashOut { to { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-24px); } }
+            @keyframes ssSplashOut { to { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.05); } }
             #ss-splash.ss-hide { opacity: 0; visibility: hidden; pointer-events: none; }
-            #ss-splash .ss-wrap { position: relative; width: 220px; height: 220px; display: flex; align-items: center; justify-content: center; }
-            #ss-splash svg { position: absolute; inset: 0; }
-            #ss-splash .ss-ring {
-                stroke-dasharray: 642; stroke-dashoffset: 642;
-                transform: rotate(-90deg); transform-origin: center;
-                animation: ssDraw 1.5s ease-in-out forwards;
+            #ss-splash .ss-stage { width: 300px; height: 300px; }
+            #ss-splash .ss-word {
+                margin-top: 0.5rem; text-align: center; opacity: 0;
+                animation: scFade 0.6s ease 2.9s forwards;
             }
-            @keyframes ssDraw { to { stroke-dashoffset: 0; } }
-            #ss-splash .ss-logo {
-                width: 160px; height: 160px; border-radius: 9999px; object-fit: cover;
-                animation: ssPop 0.8s ease 0.45s both;
+            #ss-splash .ss-word b {
+                font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: 0.04em;
+                font-size: 26px; color: #15306b;
             }
-            @keyframes ssPop { from { opacity: 0; transform: scale(0.55); } to { opacity: 1; transform: scale(1); } }
-            #ss-splash .ss-tag {
-                margin-top: 1.75rem; font-family: 'Manrope', sans-serif; font-size: 12px;
-                letter-spacing: 0.25em; text-transform: uppercase; color: #94a3b8;
-                animation: ssFade 0.6s ease 1.4s both;
+            #ss-splash .ss-word b span { color: #F97316; }
+            #ss-splash .ss-word i {
+                display: block; font-style: normal; font-family: 'Manrope', sans-serif;
+                font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #94a3b8; margin-top: 4px;
             }
-            @keyframes ssFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+            .sc-house  { opacity: 0; animation: scRise 0.7s ease 0.2s forwards; }
+            .sc-roof   { opacity: 0; transform-box: fill-box; transform-origin: center; animation: scPop 0.7s cubic-bezier(.2,.8,.2,1) 0.95s forwards; }
+            .sc-sun    { opacity: 0; transform-box: fill-box; transform-origin: center; animation: scSun 0.8s cubic-bezier(.2,.8,.2,1) 1.55s forwards; }
+            .sc-rays   { opacity: 0; transform-box: fill-box; transform-origin: center; animation: scRays 0.6s ease 2.05s forwards, scRayPulse 2.4s ease-in-out 2.7s infinite; }
+            .sc-ring   { stroke-dasharray: 850; stroke-dashoffset: 850; animation: scDraw 1.0s cubic-bezier(.4,0,.2,1) 2.2s forwards; }
+            @keyframes scRise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes scPop  { from { opacity: 0; transform: scale(0.45); } to { opacity: 1; transform: scale(1); } }
+            @keyframes scSun  { from { opacity: 0; transform: translateY(52px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes scRays { from { opacity: 0; transform: scale(0.6) rotate(-20deg); } to { opacity: 0.95; transform: scale(1) rotate(0); } }
+            @keyframes scRayPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.09); } }
+            @keyframes scDraw { to { stroke-dashoffset: 0; } }
+            @keyframes scFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         </style>
         <script>window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);</script>
         <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
@@ -65,20 +73,61 @@
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <div id="ss-splash">
-            <div class="ss-wrap">
-                <svg width="220" height="220" viewBox="0 0 220 220">
-                    <circle class="ss-ring" cx="110" cy="110" r="102" fill="none" stroke="#1E3A8A" stroke-width="5" stroke-linecap="round" />
-                </svg>
-                <img class="ss-logo" src="%PUBLIC_URL%/logo.png" alt="SUN SWITCH" />
+            <svg class="ss-stage" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="sunGrad" cx="50%" cy="45%" r="60%">
+                        <stop offset="0%" stop-color="#FFE9A8" />
+                        <stop offset="55%" stop-color="#FDB022" />
+                        <stop offset="100%" stop-color="#F97316" />
+                    </radialGradient>
+                </defs>
+                <!-- SUN (rises first visual focus after house/roof) -->
+                <g class="sc-sun">
+                    <g class="sc-rays" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round">
+                        <g transform="rotate(0 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(30 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(60 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(90 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(120 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(150 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(180 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(210 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(240 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(270 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(300 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                        <g transform="rotate(330 150 95)"><line x1="150" y1="60" x2="150" y2="47" /></g>
+                    </g>
+                    <circle cx="150" cy="95" r="26" fill="url(#sunGrad)" />
+                </g>
+                <!-- HOUSE (appears first) -->
+                <g class="sc-house">
+                    <ellipse cx="150" cy="232" rx="92" ry="12" fill="#bbf7d0" opacity="0.7" />
+                    <rect x="120" y="175" width="60" height="57" rx="4" fill="#ffffff" stroke="#15306b" stroke-width="3" />
+                    <rect x="143" y="202" width="15" height="30" rx="2" fill="#15306b" />
+                    <rect x="126" y="184" width="12" height="12" rx="2" fill="#bfdbfe" stroke="#15306b" stroke-width="2" />
+                </g>
+                <!-- ROOF + SOLAR PANELS (appears second) -->
+                <g class="sc-roof">
+                    <polygon points="112,175 188,175 172,140 128,140" fill="#1E3A8A" stroke="#15306b" stroke-width="2" stroke-linejoin="round" />
+                    <line x1="121" y1="157.5" x2="180" y2="157.5" stroke="#60A5FA" stroke-width="1.6" />
+                    <line x1="140.5" y1="140" x2="131" y2="175" stroke="#60A5FA" stroke-width="1.6" />
+                    <line x1="151" y1="140" x2="150" y2="175" stroke="#60A5FA" stroke-width="1.6" />
+                    <line x1="161.5" y1="140" x2="169" y2="175" stroke="#60A5FA" stroke-width="1.6" />
+                </g>
+                <!-- BLUE RING (draws last) -->
+                <circle class="sc-ring" cx="150" cy="150" r="135" fill="none" stroke="#15306b" stroke-width="5" stroke-linecap="round" transform="rotate(-90 150 150)" />
+            </svg>
+            <div class="ss-word">
+                <b>SUN<span>SWITCH</span></b>
+                <i>The energy of future</i>
             </div>
-            <span class="ss-tag">The energy of future</span>
         </div>
         <script>
             (function () {
                 try {
                     var el = document.getElementById("ss-splash");
                     if (!el) return;
-                    if (location.pathname.indexOf("/admin") === 0) {
+                    if (location.pathname.indexOf("/admin") === 0 || location.search.indexOf("nosplash") !== -1) {
                         el.parentNode && el.parentNode.removeChild(el);
                     }
                 } catch (e) {}

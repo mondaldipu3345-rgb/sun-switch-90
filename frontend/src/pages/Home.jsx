@@ -73,7 +73,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 text-lg text-slate-200 leading-relaxed max-w-xl">{settings.hero_subtitle}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild className="bg-solar hover:bg-solar-dark text-white rounded-full font-semibold px-7 h-12 text-base">
+              <Button asChild className="btn-solar text-white rounded-full font-semibold px-7 h-12 text-base border-0">
                 <Link to="/quote" data-testid="hero-quote-btn">GET A FREE QUOTE</Link>
               </Button>
               <a href={waLink(settings.whatsapp)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1da851] text-white font-semibold px-7 h-12 transition-colors" data-testid="hero-whatsapp-btn">
@@ -92,6 +92,7 @@ export default function Home() {
 
       {/* QUICK PRODUCT CATEGORIES */}
       <Section>
+        <TrustBand />
         <SectionHeading center eyebrow="Our Range" title="Solar Products We Offer" subtitle="Everything you need to switch to clean, reliable solar energy." />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
           {CATEGORIES.map((c, i) => (
@@ -166,13 +167,13 @@ export default function Home() {
       </Section>
 
       {/* SOLAR CALCULATOR */}
-      <Section id="solar-calculator" className="bg-white scroll-mt-24">
+      <Section id="solar-calculator" className="gradient-mesh scroll-mt-24">
         <SectionHeading eyebrow="Estimate" title="Solar Savings Calculator" subtitle="Get an instant estimate of your ideal solar system size and savings. Results are approximate estimates only." />
         <SolarCalculator />
       </Section>
 
       {/* EMI CALCULATOR */}
-      <Section id="emi-calculator" className="scroll-mt-24">
+      <Section id="emi-calculator" className="bg-white scroll-mt-24">
         <SectionHeading eyebrow="Finance" title="Installment (EMI) Calculator" subtitle="Plan your solar investment with an estimated monthly installment. Figures are indicative only." />
         <EmiCalculator />
       </Section>
@@ -281,6 +282,33 @@ export default function Home() {
           </div>
         </div>
       </Section>
+    </div>
+  );
+}
+
+const TRUST = [
+  { t: "Free Site Survey", d: "No-obligation assessment", icon: CheckCircle2 },
+  { t: "Professional Installation", d: "Trained technicians", icon: PanelTop },
+  { t: "After-Sales Support", d: "We stay with you", icon: Headset },
+  { t: "Subsidy Assistance", d: "Guidance & paperwork", icon: PiggyBank },
+];
+
+function TrustBand() {
+  return (
+    <div className="relative -mt-36 sm:-mt-32 mb-16 z-10">
+      <div className="bg-white rounded-3xl premium-shadow border border-slate-100 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {TRUST.map((t) => (
+          <div key={t.t} className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-solar to-amber-400 flex items-center justify-center shrink-0 shadow-md">
+              <t.icon className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <div className="font-heading font-bold text-navy-dark leading-tight">{t.t}</div>
+              <div className="text-xs text-slate-500 mt-0.5">{t.d}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
