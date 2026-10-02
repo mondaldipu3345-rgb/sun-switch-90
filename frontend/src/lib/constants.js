@@ -7,8 +7,8 @@ export const NAV_LINKS = [
   { label: "GALLERY", to: "/gallery" },
   { label: "TESTIMONIALS", to: "/testimonials" },
   { label: "CONTACT", to: "/contact" },
+  { label: "CALCULATOR", to: "/calculator" } 
 ];
-
 export const PRODUCT_CATEGORIES = [
   "Solar Panel", "Solar Inverter", "Solar Battery",
   "On-Grid System", "Off-Grid System", "Hybrid System",
