@@ -7,4 +7,4 @@ export default function Contact() {
       <p>Get in touch with us!</p>
     </div>
   );
-}
+} //fix
